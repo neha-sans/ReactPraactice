@@ -16,7 +16,6 @@ export default class NewTaskForm extends Component {
 		} ) )
 	}
 
-
 	render () {
 		return (
 			<form onSubmit={ ( event ) => this.props.onSubmit( event, this.state.text ) }>
@@ -30,16 +29,3 @@ export default class NewTaskForm extends Component {
 		)
 	}
 }
-
-
-// import React, { Component } from 'react'
-
-// export default class Input extends Component {
-// 	render() {
-// 		return (
-// 			<div>
-
-// 			</div>
-// 		)
-// 	}
-// }

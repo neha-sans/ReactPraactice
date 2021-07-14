@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Wrapper from '../util/Wrapper';
 
 const E_Status = {
 	'COMPLETED': { value: 'Completed', next: 'DUE', color: 'green' },
@@ -33,9 +34,9 @@ export default class Status extends Component {
 			backgroundColor: `${ E_Status[ this.state.status ].color }`
 		};
 		return (
-			<div>
+			<Wrapper>
 				<div onClick={ this.handleTaskStatus } style={ statusStyle }></div>
-			</div>
+			</Wrapper>
 		)
 	}
 }

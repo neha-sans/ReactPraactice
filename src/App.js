@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import './App.css';
 import NewTaskForm from './todo/NewTaskForm';
 import TaskList from "./todo/TaskList";
+import Wrapper from './util/Wrapper';
 
 class App extends Component {
   constructor ( props ) {
@@ -35,11 +36,11 @@ class App extends Component {
 
   render () {
     return (
-      <div style={ { margin: '0 auto', width: '100%' } }>
+      <React.Fragment>
         <h1>Todo</h1>
         <NewTaskForm onSubmit={ this.handleSubmit } />
         <TaskList tasks={ this.state.tasks } />
-      </div>
+      </React.Fragment >
     );
   }
 
