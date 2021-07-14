@@ -1,43 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Status from './Status'
 
-
-const Status = {
-	'COMPLETED': { value: 'Completed', next: 'DUE' },
-	'DUE': { value: 'Due', next: 'COMPLETED' },
-}
-
-
-
-class Task extends Component {
-
-	constructor ( props ) {
-		super( props )
-		this.state = {
-			status: props.status
-		}
-		this.handleTaskStatus = this.handleTaskStatus.bind( this );
-	}
-
-	handleTaskStatus () {
-		this.setState(
-			( prevState ) => {
-				return {
-					...prevState,
-					status: Status[ prevState.status ].next
-				}
-			},
-			() => console.log( "chnaged status", this.state )
-		)
-	}
-
-	render () {
-		return (
-			<div>
-				<span onClick={ this.handleTaskStatus }>{ Status[ this.state.status ].value }</span>
-				{ ` ` + this.props.text }
-			</div>
-		)
-	}
+const Task = ( props ) => {
+	return (
+		<div style={ { display: 'flex', width: '100%', marginBottom: '5px', marginRight: '5px', alignItems: 'center' } }>
+			<Status initialStatus={ props.status } />
+			<div>{ props.text }</div>
+		</div>
+	)
 }
 
 export default Task;
