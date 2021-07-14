@@ -22,8 +22,7 @@ export default class Status extends Component {
 					...prevState,
 					status: E_Status[ prevState.status ].next
 				}
-			},
-			() => console.log( "chnaged status", this.state )
+			}
 		)
 	}
 
