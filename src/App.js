@@ -1,35 +1,38 @@
 import React, { Component } from "react";
-import './App.css';
-import Pokemon from './pokemon/Pokemon';
-
+import "./App.css";
+import Pokemon from "./pokemon/Pokemon";
 
 export default class App extends Component {
   constructor ( props ) {
-    super( props )
+    super( props );
     this.state = {
-    }
+      characterIds: [ ...this.props.pokemon ],
+    };
+    this.deletePokemon = this.deletePokemon.bind( this );
+  }
+
+  deletePokemon ( idToDelete ) {
+    this.setState( ( prevState ) => {
+      const prevIds = [ ...prevState.characterIds ];
+      const newIds = prevIds.filter( id => id !== idToDelete );
+      console.log( newIds, idToDelete )
+      return {
+        ...prevState,
+        characterIds: newIds
+      };
+    } );
   }
 
   render () {
     return (
-      <div className='App'>
-        { this.props.pokemon.map( ( characterId, index ) =>
-          <Pokemon
-            key={ `Pokemon_${ index }` }
-            characterId={ characterId }
-          />
-        ) }
+      <div className="App">
+        { this.state.characterIds.map( ( characterId, index ) => (
+          <Pokemon key={ `Pokemon_${ index }` } onDelete={ this.deletePokemon } characterId={ characterId } />
+        ) ) }
       </div>
-    )
+    );
   }
 }
-
-
-
-
-
-
-
 
 // import NewTaskForm from './todo/NewTaskForm';
 // import TaskList from "./todo/TaskList";
